@@ -1,0 +1,74 @@
+\documentclass{report}
+\usepackage{graphicx}
+\begin{document}
+	\textbf{Backpropagation in Neural Network}
+	
+	\vspace{0.5cm}
+	
+	Backpropagation (Backward Propagation of Errors) is a method used to train artificial neural networks. Its goal is
+	
+	 to reduce the difference between the model's predicted output and the actual output by adjusting the weights in
+	 
+	  the network.
+	
+	\vspace{0.5cm}
+	
+	\textbf{What is Backpropagation?}
+	
+	\vspace{0.5cm}
+	
+	Backpropagation is a powerful algorithm in deep learning, primarily used to train artificial neural networks. It 
+	
+	works iteratively, minimizing the cost function by adjusting weights and biases.
+	
+	\vspace{0.2cm}
+	
+	In each epoch, the model adapts these parameters, reducing loss by following the error gradient. Backpropagation
+	
+	 often utilizes optimization algorithms like gradient descent or stochastic gradient descent 
+	
+	\vspace{0.5cm}
+	
+	\textbf{Working of Backpropagation Algorithm}
+	
+	\vspace{0.5cm}
+	
+	The Backpropagation algorithm involves two main steps: the \textbf{Forward Pass} and the \textbf{Backward Pass}
+	
+	\vspace{0.3cm}
+	
+	\textbf{How does the Forward Pass work?}
+	
+	\vspace{0.3cm}
+	In the forward pass, the input data is fed into the input layer. These inputs, combined with their respective 
+	
+	weights, are passed to hidden layers.
+	
+	For example, in a network with two hidden layers (h1 and h2 as shown in next page), the output from h1 serves as
+	
+	 the input to h2. Before applying an activation function, a bias is added to the weighted inputs.
+	
+	Each hidden layer applies an activation function like ReLU (Rectified Linear Unit), which returns the input if it’s
+	
+	 positive and zero otherwise. This adds non-linearity, allowing the model to learn complex relationships in the data.
+	 
+	  Finally, the outputs from the last hidden layer are passed to the output layer, where an activation function,
+	  
+	   such as softmax, converts the weighted outputs into probabilities for classification.
+	   
+	   \centering
+	\includegraphics[height=0.3\linewidth]{"C:/Users/ParsysRayan/Desktop/ترم ۷ کارشناسی/forwards-pass"}
+
+    \vspace{0.5cm}
+    
+    \textbf{How does the Backward Pass Work?}
+    
+    \vspace{0.3cm}
+    
+    In the backward pass, the error (the difference between the predicted and actual output) is propagated back through the network to adjust the weights and biases. One common method for error calculation is the Mean Squared Error (MSE), given by:
+    \begin{equation}
+    MSE = (Predicted \hspace{0.1cm} Output - Actual \hspace{0.1cm} Output)^2
+\end{equation}
+    
+    Once the error is calculated, the network adjusts weights using gradients, which are computed with the chain rule. These gradients indicate how much each weight and bias should be adjusted to minimize the error in the next iteration. The backward pass continues layer by layer, ensuring that the network learns and improves its performance. The activation function, through its derivative, plays a crucial role in computing these gradients during backpropagation.
+\end{document}
