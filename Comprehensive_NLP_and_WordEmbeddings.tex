@@ -1,0 +1,189 @@
+
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath, amssymb, graphicx, hyperref, setspace, booktabs, longtable}
+\setstretch{1.5}
+
+\title{Comprehensive Guide to Neural Networks for NLP and Word Embeddings}
+\author{Based on presentations by Tomas Mikolov and Danna Gurari}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduction to Natural Language Processing (NLP)}
+Natural Language Processing (NLP) focuses on the interaction between computers and human language. Its applications span a wide range of domains, including search engines, virtual assistants, and social media analysis.
+
+\subsection{Defining NLP}
+NLP is the field of artificial intelligence that equips machines with the ability to read, interpret, and generate human language. It bridges linguistics and computer science to enable:
+\begin{itemize}
+    \item Machine translation.
+    \item Text summarization.
+    \item Sentiment analysis.
+    \item Speech recognition.
+\end{itemize}
+
+\subsection{Key Challenges}
+\begin{enumerate}
+    \item \textbf{Ambiguity:} Words or sentences can have multiple interpretations.
+    \item \textbf{Data Scarcity:} Many languages and domains lack annotated datasets.
+    \item \textbf{Dynamic Context:} Meaning can shift depending on context, requiring models to adapt.
+\end{enumerate}
+
+\subsection{Applications of NLP}
+\begin{itemize}
+    \item \textbf{Search and Retrieval:} Google uses NLP to improve query results.
+    \item \textbf{Chatbots:} Virtual assistants like Alexa and Siri rely on NLP.
+    \item \textbf{Content Moderation:} Automatically flagging harmful or inappropriate content.
+    \item \textbf{Machine Translation:} Services like Google Translate facilitate communication across languages.
+\end{itemize}
+
+\section{Traditional Approaches in NLP}
+Before the advent of deep learning, NLP relied heavily on statistical models and hand-engineered features.
+
+\subsection{N-grams for Language Modeling}
+An \(n\)-gram is a sequence of \(n\) words used to estimate the likelihood of word sequences:
+\[
+P(w_1, w_2, \ldots, w_n) = \prod_{i=1}^{n} P(w_i \mid w_{i-1}, w_{i-2}, \ldots, w_{i-n+1}).
+\]
+For example, in trigrams (\(n=3\)):
+\[
+P(\text{sentence}) = P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2).
+\]
+
+\subsection{Bag-of-Words (BoW)}
+BoW represents text by counting word frequencies, disregarding order:
+\[
+\text{Document: "cats chase mice"} \to [1, 0, 1, 1].
+\]
+While simple, this method loses syntactic relationships between words.
+
+\subsection{One-Hot Encoding}
+Each word in a vocabulary is represented by a binary vector:
+\[
+\text{Vocabulary: ["cat", "dog", "fish"]}, \quad \text{cat} \to [1, 0, 0].
+\]
+This approach leads to sparsity and lacks semantic relationships.
+
+\section{Deep Learning for NLP}
+Deep learning revolutionized NLP by introducing models capable of automatically learning features from data.
+
+\subsection{Neural Networks Overview}
+Neural networks consist of interconnected layers:
+\begin{itemize}
+    \item \textbf{Input Layer:} Processes raw data (e.g., word embeddings).
+    \item \textbf{Hidden Layers:} Transform inputs through weights and activation functions.
+    \item \textbf{Output Layer:} Produces predictions (e.g., next word in a sequence).
+\end{itemize}
+
+\subsection{Recurrent Neural Networks (RNNs)}
+RNNs model sequential data by maintaining hidden states across time:
+\[
+h_t = f(W_{hh} h_{t-1} + W_{xh} x_t),
+\]
+where \(W_{hh}\) and \(W_{xh}\) are weight matrices. Variants include:
+\begin{itemize}
+    \item \textbf{LSTM:} Introduces gates to control information flow and address long-term dependencies.
+    \item \textbf{GRU:} Simplifies the LSTM architecture while retaining performance.
+\end{itemize}
+
+\subsection{Applications of Neural Networks in NLP}
+\begin{itemize}
+    \item \textbf{Text Classification:} Labeling documents as spam or non-spam.
+    \item \textbf{Machine Translation:} Converting text between languages.
+    \item \textbf{Sentiment Analysis:} Extracting emotion from text.
+\end{itemize}
+
+\section{Word Embeddings}
+Word embeddings map words to dense, low-dimensional vectors in a continuous space.
+
+\subsection{Motivation and Concept}
+Word embeddings capture semantic meaning:
+\[
+\text{king} - \text{man} + \text{woman} = \text{queen}.
+\]
+This enables models to generalize across tasks, unlike one-hot encoding.
+
+\subsection{Training Techniques}
+\subsubsection{Word2Vec}
+Word2Vec employs two architectures:
+\begin{itemize}
+    \item \textbf{CBOW:} Predicts a word given its context.
+    \item \textbf{Skip-Gram:} Predicts context words given a target word.
+\end{itemize}
+
+\subsubsection{GloVe}
+GloVe captures global co-occurrence statistics to produce embeddings that reflect word relationships.
+
+\subsubsection{FastText}
+FastText represents words as character n-grams, handling out-of-vocabulary words effectively.
+
+\subsection{Advanced Embedding Models}
+\begin{itemize}
+    \item \textbf{ELMo:} Context-sensitive embeddings derived from a bidirectional language model.
+    \item \textbf{BERT:} Generates contextualized embeddings by processing text bidirectionally.
+    \item \textbf{Transformers:} Architectures like GPT enable dynamic context handling.
+\end{itemize}
+
+\subsection{Applications of Word Embeddings}
+\begin{itemize}
+    \item \textbf{Semantic Similarity:} Identifying related words.
+    \item \textbf{Named Entity Recognition (NER):} Extracting entities like names or dates.
+    \item \textbf{Text Summarization:} Generating concise text summaries.
+\end{itemize}
+
+\subsection{Limitations of Word Embeddings}
+\begin{itemize}
+    \item \textbf{Biases:} Gender and societal biases can propagate into embeddings.
+    \item \textbf{Context Insensitivity:} Static embeddings fail to capture varying meanings of words.
+\end{itemize}
+
+\section{Mathematical Foundations of Word Embeddings}
+\subsection{Distributional Semantics}
+The distributional hypothesis states:
+\[
+\text{"Words used in similar contexts have similar meanings."}
+\]
+This underpins the creation of word embeddings.
+
+\subsection{Objective Functions}
+Word2Vec minimizes the negative log-likelihood of predicting context words:
+\[
+J = -\sum_{w \in C} \log P(w \mid t),
+\]
+where \(P(w \mid t)\) is the probability of a context word \(w\) given target \(t\).
+
+\subsection{Similarity Metrics}
+Common metrics for comparing word embeddings:
+\begin{itemize}
+    \item \textbf{Cosine Similarity:}
+    \[
+    \text{sim}(u, v) = \frac{u \cdot v}{\|u\| \|v\|}.
+    \]
+    \item \textbf{Euclidean Distance:}
+    \[
+    d(u, v) = \sqrt{\sum_{i=1}^n (u_i - v_i)^2}.
+    \]
+\end{itemize}
+
+\section{Future Directions in NLP}
+\subsection{Bias Mitigation}
+Developing debiasing methods for word embeddings to reduce societal stereotypes.
+
+\subsection{Multilingual Models}
+Improving support for low-resource languages and multilingual applications.
+
+\subsection{Dynamic Representations}
+Enhancing embeddings to adapt to varying contexts dynamically.
+
+\textbf{References:}
+\begin{itemize}
+    \item Tomas Mikolov, \textit{Neural Networks for Natural Language Processing Slides}, 2017.
+    \item Danna Gurari, \textit{Introduction to NLP and Word Embeddings}, 2022.
+\end{itemize}
+
+\end{document}
