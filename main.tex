@@ -267,6 +267,22 @@ attention layers running in parallel.}
 
 In the original work, the authors chose $h=8$ attention heads. One more important point is that in multi-head attention, usually the $Q, K,$ and $V$ matrices are given to it as input, and there is no need to compute it, unlike in self-attention. However, if they are not provided in the input, they can be taken to be equal to $X$.
 
+\subsection{Transformer Architecture (2017)}
+
+Using the components discussed in the previous section, we can build the Transformer according to the encoder-decoder architecture as seen in figure \ref{fig:transformer}. In the original work, 6 encoder layers and 6 decoder layers were trained.
+
+\begin{figure}[T]
+    \centering
+    \includegraphics[width=0.65\linewidth]{fig/transfomer.png}
+    \caption{Transformer Architecture}
+    \label{fig:transformer}
+\end{figure}
+
+\subsection{Impact of Transformers}
+Transformers were able to achieve state-of-the-art performance compared to the recurrent models. 
+Ever since their introduction in 2017, Transformers have revolutionized the field of natural language processing and machine learning as a whole. 
+
+Transformers became the foundation for a wave of groundbreaking models, such as BERT, GPT, and T5, which pushed the boundaries of tasks like translation, summarization, question answering, and text generation. The architecture also extended beyond NLP, impacting areas such as computer vision (e.g., Vision Transformers), time-series analysis, and even protein structure prediction (e.g., AlphaFold \textcolor{red}{[Reference]}). The introduction of pre-training and fine-tuning paradigms further solidified their impact, making domain adaptation efficient and accessible.
 
 
 \end{document}
