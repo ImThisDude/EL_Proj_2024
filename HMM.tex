@@ -1,0 +1,45 @@
+\begin{document}
+	EL-Project1
+	
+	\textbf{Machine Learning and Markov Model in Natural Language Processing}
+
+\vspace{2cm}
+    \textbf{Hidden Markov Models}
+    
+    A Hidden Markov Model is a statistical model which is also used in Machine Learning. It can be used to describe the evolution of observable events that depend on internal factors, which are not directly observable.
+    The applications where the HMM (Hidden Markov Model) can be used are cases such as time series data, audio and video data, and text data or Natural Language Processing data. In this part, our main focus is on those applications of NLP where we can use the HMM for better performance of the model, for example, we can use HMM in the Part-Of-Speech tagging.
+    
+    \vspace{0.5cm}
+    \textbf{What is POS-tagging?}
+    
+    We have learned that the part of speech indicates the function of any word, like what it means in any sentence. There are commonly nine parts of speeches; noun, pronoun, verb, adverb, article, adjective, preposition, conjunction, interjection, and a word need to be fit into the proper part of speech to make sense in the sentence. 
+    POS tagging is a very useful part of text preprocessing in NLP as we know that NLP is a task where we make a machine able to communicate with a human or with a different machine. So it becomes compulsory for a machine to understand the part of speech.
+    Classifying words in their part of speech and providing their labels according to their part of speech is called part of speech tagging or POS tagging OR POST.
+    
+    \vspace{0.5cm}
+    \textbf{POS tagging with Hidden Markov Model}
+    
+    Let's take an example to make it more clear how HMM helps in selecting an accurate POS tag for a sentence.
+    Consider the sentence "The cat sat on the mat.", We want to determine the most likely POS for each word and the HMM model.
+    
+    Possible POS tags are: \hspace{1cm} $\bullet$ Noun (N) \hspace{1cm} $\bullet$ Verb (V) \hspace{1cm} $\bullet$ Determiner (D) \hspace{1cm} $\bullet$ Preposition (IN)
+    
+    HMM calculation: 
+    
+    $\bullet$ "The" is most likely a determiner (D)
+    
+    $\bullet$ Given that "The" is a D, "cat" is likely a N
+    
+    $\bullet$ Following a noun, "sits" is likely a verb
+    
+    $\bullet$ Similarly, "on" is a prespoition (IN) and "the" is again a determiner (D)
+    
+    $\bullet$ Finally, "mat" is most likely another noun (N)
+    \vspace{1cm}
+    
+    \textbf{Maximum Entropy in NLP}
+    
+    Maximum Entropy is a powerful statistical method frequently employed in Natural Language Processing for tasks like text classification, part-of-speech
+    tagging, and named entity recognition. It's based the principle of maximizing uncertainty or entropy, subject to constraints derived from observed data.
+	
+\end{document}
