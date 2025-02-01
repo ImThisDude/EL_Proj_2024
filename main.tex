@@ -143,5 +143,130 @@ Ali Ghozati & 610xxxxxx \\
 \bibliographystyle{unsrt}
 \bibliography{Biby.bib}
 
+\section{Transformer Networks}
+
+\subsection{Encoder-Decoder Architecture}
+A common architecture in sequence-to-sequence models is the encoder-decoder architecture. In this architecture, generally, the model consists of an encoder component, which receives the input sequence and learns to encode it into complex representations. Then, a decoder component uses these representations from the encoder to generate the output sequence. Here, the decoder essentially acts as a conditional language model, taking in the encoded input from the encoder and the leftwards context of the target sequence and predicting the subsequent target sequence. 
+
+Here is a diagram showing the encoder-decoder architecture:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{fig/enc-dec.png}
+    \caption{Encoder-Decoder Architecture}
+\end{figure}
+
+Encoder-decoder architectures can successfully be employed in sequence to sequence tasks with varying input and output sizes, such as machine translation, text summarization, and more. 
+
+\textcolor{red}{[Dive Into Deep Learning]}
+
+\subsection{Limitations of Recurrent Networks}
+Recurrent neural networks \textcolor{red}{[Reference]}, long short-term memory \textcolor{red}{[Reference]}, gated recurrent \textcolor{red}{[Reference]}, and similar recurrent networks, have been firmly established well-performing approaches in sequence modeling and transduction problems such as language modeling, machine translation, and other NLP problems.
+
+Recurrent models typically compute along the symbol positions of the input and output sequences. This means that they perform their computations sequentially. They learn a sequence of hidden states $h_t$ as a function of the previous hidden state $h_{t-1}$ and the input for position $t$. This sequential nature of processing limits parallelization within training examples, which becomes a problem with longer sequences as memory constraints limit batching across examples and training times increase. 
+
+Moreover, these models can not quite capture the long-term dependencies and contexts of longer sequences. To mitigate these problems and improve model performance, a ground-breaking architecture called the Transformer Network was proposed in 2017 \textcolor{red}{[Transformer]}. The Transformer uses the following mechanisms in its architecture: \\[-20pt]
+\begin{enumerate}
+    \item Self-Attention \\[-20pt]
+    \item Multi-Head Attention \\[-20pt]
+    \item Positional Encoding \\[-20pt]
+    \item Batch Norm \\[-20pt]
+    \item Residual Connections \\[-20pt]
+    \item Masked Multi-Head Attention \\[-20pt]
+\end{enumerate}
+
+We will first discuss some of these concepts briefly before providing the full Transformer architecture.
+
+\subsection{Mechanisms in Transformer}
+\subsubsection{Self-Attention}
+To build up to the Transformer network, we need to first speak about its most fundamental component: \textbf{Self-Attention}.
+
+Static Embeddings, as previously discussed, convert a token into a feature vector embedding that represents the token with a vector of numbers. Static embeddings, unfortunately, do not take the context of the token into account when creating the vector embedding. This is a limitation of the static embeddings learned using algorithms such as seq2vec.
+
+To expand the idea of static embeddings to include contextualized information, self-attention is used to create contextualized embeddings that more adequately represent tokens in a sentence.
+
+Self-attention inputs the input tokens ${X}$ and then uses three learnable weight matrices,
+
+$$
+\begin{align*}
+&W^Q \in \mathbb{R}^{d_{\text {model }} \times d_k} \\ &W^K \in \mathbb{R}^{d_{\text {model }} \times d_k} \\&W^V \in \mathbb{R}^{d_{\text {model }} \times d_v}
+\end{align*}
+$$
+
+to obtain the \textbf{query}, \textbf{key}, and \textbf{value} matrices,
+
+$$
+{
+\begin{align*}
+&Q = XW^Q  \\
+&K = XW^K\\
+&V = XW^V
+\end{align*}
+}
+$$
+
+which we will use to obtain $\green{A(Q, K, V)}$ contextualized embedding. The final equation for self-attention using these values is:
+
+$$
+\operatorname{Attention}(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V$$
+
+\subsubsection{Positional Encoding}
+Another component of the Transformers is the \textbf{Positional Encoding}. Positional encodings are additional encodings that get added to the input encoding to inject positional information into self-attention. The reason for this is that self-attention on its own does not distinguish along positions and does not content itself with time-steps, therefore it would perform poorly with regards to learning positional patterns. The positional encoding provides the positional information needed for the model to achieve better spatial clarity and performance.
+
+Many possible functions can be used for positional encoding, however, they must all have the following properties:
+
+\begin{enumerate}
+    \item \textbf{Not Ambiguous} - Have different values for different positions.
+    
+    \item \textbf{Deterministic} - It needs to be able to be calculated using the position values deterministically for the model to learn the position patterns.
+    
+    \item \textbf{Distance Encoded} - The encodings need to contain distance information; for instance, the encoding should allow the model to learn that position 1 is as far away as position 11 from position 6.
+    
+    \item \textbf{Work with sequences longer than encountered before} - It needs to work for sequences far longer than the sequences it is trained on.
+\end{enumerate}
+
+The positional encoding provided in the Transformer paper is the \textbf{sinusoidal positional encoding}.
+
+The sinusoidal positional encoding assigns each position $p$ in the sequence a vector $P E(p)$ of the same dimension $d_{\text {model }}$ as the embedding vectors. This encoding is defined as:
+$$
+\begin{gathered}
+P E(p, 2 i)=\sin \left(\frac{p}{10000^{2 i / d_{\text {model }}}}\right) \\
+P E(p, 2 i+1)=\cos \left(\frac{p}{10000^{2 i / d_{\text {model }}}}\right)
+\end{gathered}
+$$
+
+where $p$ is the position in the sequence, $i$ is the dimension index, and $d_{\text {model }}$ is the dimensionality of the encoding and token embeddings.
+
+After obtaining the desired positional encodings (PEs), we have two options: either concatenate them with the input embeddings, which increases computational cost, or follow the approach suggested in the Transformer paper—adding the PEs directly to the input embeddings and allowing the model to learn their integration effectively.
+
+$$
+\tilde{\mathbf{x}}_t=\mathbf{x}_t+\mathbf{p}_t
+$$
+
+\subsubsection{Multi-Head Attenion}
+As stated before, Transformers offer massive parallelization benefits due to their extensive use of attention. To facilitate this, multiple heads are performing attention at once. This is called the \textbf{Multi-Head Attention}. Here is its equation:
+$$
+\begin{aligned}
+& \operatorname{MultiHead}(Q, K, V)=\operatorname{Concat}\left(\operatorname{head}_1, \ldots, \operatorname{ head}_{\mathrm{h}}\right) W^O \\
+& \text { where } \operatorname { head}_{\mathrm{i}}=\operatorname{Attention}\left(Q W_i^Q, K W_i^K, V W_i^V\right)
+\end{aligned}
+$$
+
+
+Where the projections are parameter matrices $W_i^Q \in \mathbb{R}^{d_{\text {model }} \times d_k}, W_i^K \in \mathbb{R}^{d_{\text {model }} \times d_k}, W_i^V \in \mathbb{R}^{d_{\text {model }} \times d_v}$ and $W^O \in \mathbb{R}^{h d_v \times d_{\text {model }}}$.
+
+The process of multi-head attention can be observed in the following diagram.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/multi-head.png}
+    \caption{Multi-Head Attention consists of several
+attention layers running in parallel.}
+    \label{fig:enter-label}
+\end{figure}
+
+In the original work, the authors chose $h=8$ attention heads. One more important point is that in multi-head attention, usually the $Q, K,$ and $V$ matrices are given to it as input, and there is no need to compute it, unlike in self-attention. However, if they are not provided in the input, they can be taken to be equal to $X$.
+
+
 
 \end{document}
