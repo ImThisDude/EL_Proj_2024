@@ -1,0 +1,146 @@
+%
+% 6.006 problem set 0 solutions template
+%
+\documentclass[11pt,twoside]{article}
+
+\input{macros-sp20}
+\newcommand{\theproblemsetnum}{3}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{booktabs} % For better horizontal rules
+\usepackage{tabularx} % For flexibility in column widths
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{changepage} % for the adjustwidth environment
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{adjustbox}
+\usetikzlibrary{shapes, arrows.meta, positioning}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{subcaption}
+
+\newcommand{\labels}[2]{%
+\\ \textcolor{cyan}{$#1+$}, \textcolor{magenta}{$#2-$}%
+}
+
+\setlength{\parskip}{0.5em} % Adjust to desired spacing
+
+\title{UT ML Problem Set 2}
+
+\begin{document}
+\handout{Project Report}
+
+\setlength{\parindent}{0pt}
+
+\begin{center}
+
+{\LARGE \textbf{An Overview of Language Models }} \\[20pt]
+
+\textbf{ --- Fall 2024 --- } \\[15pt]
+
+\medskip
+
+{\large \textbf{Project Collaborators:}}
+\medskip
+
+\begin{table}[h]
+\centering
+\begin{tabularx}{0.8\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+\toprule
+\textbf{Name} & \textbf{Student ID} \\
+\midrule
+Mobin Roohi & 610300060 \\
+Amirhossein Ghorbaninezhad &  610xxxxxx\\
+Vida Karbasi & 610xxxxxx \\
+Ali Ghozati & 610xxxxxx \\
+\bottomrule \\[20pt]
+\end{tabularx}
+\end{table}
+\end{center}
+
+
+\begin{abstract}
+\textit{}
+
+\textit{
+}
+
+\textit{
+}
+
+\textit{
+}
+\end{abstract}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% See below for common and useful latex constructs. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Some useful commands:
+% $f(x) = \Theta(x)$
+% $T(x, y) \leq \log(x) + 2^y + \binom{2n}{n}$
+% \ttt{code\_function}
+
+
+% You can create unnumbered lists as follows:
+% \begin{itemize}
+%     \item First item in a list
+%         \begin{itemize}
+%             \item First item in a list
+%                 \begin{itemize}
+%                     \item First item in a list
+%                     \item Second item in a list
+%                 \end{itemize}
+%             \item Second item in a list
+%         \end{itemize}
+%     \item Second item in a list
+% \end{itemize}
+
+% You can create numbered lists as follows:
+% \begin{enumerate}
+%     \item First item in a list
+%     \item Second item in a list
+%     \item Third item in a list
+% \end{enumerate}
+
+% You can write aligned equations as follows:
+% \begin{align}
+%     \begin{split}
+%         (x+y)^3 &= (x+y)^2(x+y) \\
+%                 &= (x^2+2xy+y^2)(x+y) \\
+%                 &= (x^3+2x^2y+xy^2) + (x^2y+2xy^2+y^3) \\
+%                 &= x^3+3x^2y+3xy^2+y^3
+%     \end{split}
+% \end{align}
+
+% You can create grids/matrices as follows:
+% \begin{align}
+%     A =
+%     \begin{bmatrix}
+%         A_{11} & A_{21} \\
+%         A_{21} & A_{22}
+%     \end{bmatrix}
+% \end{align}
+
+
+%‌ PCA‌ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{
+\setlength{\parskip}{0.35em} 
+\tableofcontents
+}
+\newpage
+
+
+
+\addcontentsline{toc}{section}{Bibliography}
+\bibliographystyle{unsrt}
+\bibliography{Biby.bib}
+
+\end{document}
