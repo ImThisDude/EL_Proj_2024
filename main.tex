@@ -284,5 +284,174 @@ Ever since their introduction in 2017, Transformers have revolutionized the fiel
 
 Transformers became the foundation for a wave of groundbreaking models, such as BERT, GPT, and T5, which pushed the boundaries of tasks like translation, summarization, question answering, and text generation. The architecture also extended beyond NLP, impacting areas such as computer vision (e.g., Vision Transformers), time-series analysis, and even protein structure prediction (e.g., AlphaFold \textcolor{red}{[Reference]}). The introduction of pre-training and fine-tuning paradigms further solidified their impact, making domain adaptation efficient and accessible.
 
+\section{Pre-Trained Models and Fine-Tuning}
+Given the previous overview on Transformers, two fundamental concepts in NLP are pre-training and fine-tuning language models such as the Transformer. In most of the state-of-the-art language models seen today, these two concepts are used.
+
+\subsection{Pre-Training}
+Pre-training is the process of training a model on a large corpus of unlabeled data to learn a general-purpose understanding and representation of the language. This step typically uses self-supervised learning, where the model is trained to predict parts of the input based on the rest, without requiring manually labeled datasets.
+
+Some tasks used for the self-supervised learning in pre-training include:
+
+\begin{enumerate}
+    \item \textbf{Masked Language Modeling (MLM):} In MLM, some input tokens are randomly masked, and the model is trained to predict these tokens based on their context. This task was used in the training of BERT\footnote{Bidirectional encoder representations from transformers}  model by Google in 2018 \textcolor{red}{[Reference]}.
+
+    \item \textbf{Causal Language Modeling (CLM):} The model predicts the next token in a sequence given its previous tokens, operating in an autoregressive\footnote{Left-to-right} fashion. GPT\footnote{Generative pre-trained transformer} (2018) by OpenAI uses this approach, training models left-to-right.
+\end{enumerate}
+
+Pre-training allows for the learning of syntactic and semantic patterns of the language. These pre-trained models are then used as a foundation, significantly reducing the labeled data requirements for downstream tasks. In the larger pre-trained models improvement of performance can be achieve on diverse tasks.
+
+\subsection{Fine-Tuning}
+After pre-training is complete \textbf{Fine-tuning} is performed on a pre-trained model to purpose it for a specific task using labeled data. This step typically modifies the pre-trained weights slightly to optimize performance for the target task.
+
+Transitioning from the pre-training and fine-tuning paradigms, we will explore BERT and GPT which are successful examples of using transformers as pre-trained models and then fine-tuning them to achieve great performance across NLP tasks.
+
+\subsection{GPT (2018)}
+GPT (Generative Pre-Trained Transformer) as the names suggest was a pre-trained model based on the decoder of the transformer introduced in 2018.  It introduced unsupervised pre-training followed by supervised fine-tuning. This model uses a unidirectional next word prediction task for training the model on multiple stacks of transformer decoders.
+
+This pre-trained could then be fine-tuned by an output layer or component to specific NLP tasks such as question answering, translation, or text classification.
+
+GPT was trained on the BooksCorpus dataset (a collection of about 11,000 unpublished books) and other publicly available datasets.
+
+Here are some of the specifications of the GPT:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Specification}          & \textbf{GPT (2018)}      \\ \midrule
+Number of Transformer Layers    & 12                           \\
+Number of Parameters            & 117M                         \\
+Number of Multi-Head Attentions & 12                           \\ \bottomrule
+\end{tabular}
+\caption{Specifications of GPT }
+\label{tab:gpt_specs}
+\end{table}
+
+The GPT achieved state-of-the-art performance in many tasks such as commonsense reasoning and question answering.
+
+
+\subsection{BERT (2018)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/BERt.png}
+    \caption{BERT Training}
+    \label{fig:enter-label}
+\end{figure}
+
+\textbf{BERT (Bidirectional Encoder Representations from Transformers)} is a pre-trained language model introduced by Google in 2018. Unlike GPT, which is an autoregressive model generating text left-to-right, BERT uses bidirectional language representation by considering both left and right contexts. This bidirectional contextual understanding allows BERT to excel at tasks requiring a comprehensive understanding of the input text, such as classification and question answering.
+
+BERT was pre-trained using only the encoder layer of transformer. One of the innovations of the BERT paper was the masked language model task which allows the model to learn bidirectionally by masking 15\% of the input tokens, either from left or right and asking the model to predict it.
+
+Additionally, next sentence prediction task was also leveraged for model training. This task allows the model to understand the relationship between two sentences. The model is fed pairs of sentences and must predict whether the second sentence is the actual next sentence in the original text. This is particularly useful for tasks like question answering and natural language inference.
+
+
+There were to versions of BERT released, BERT Base and BERT Large. Here are some specification relating to these two pre-trained models: \\
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Specification}           & \textbf{BERT-Base} & \textbf{BERT-Large} \\ \midrule
+Number of Transformer Layers     & 12                 & 24                  \\
+Number of Parameters             & 110M               & 340M                \\
+Number of Multi-Head Attentions  & 12                 & 16                  \\ \bottomrule
+\end{tabular}
+\caption{Specifications of BERT-Base and BERT-Large}
+\label{tab:bert_specs}
+\end{table}
+
+
+After pre-training, BERT can be fine-tuned for specific NLP tasks by adding a simple output layer. Fine-tuning adjusts the parameters of BERT slightly to adapt it to the specific task, such as text classification, question answering, named entity recognition, and more.
+
+\section{GPT-2 and GPT-3}
+
+\subsection{GPT 2 (2019)}
+In 2019 GPT-2 was introduced. GPT-2 was step up from GPT in terms of its scale. It used a very similar architecture to GPT, however it was much larger which allowed it to have boosted performance across different tasks. It kept the transformer decoder-based self-supervised style of training a pre-trained model and supervised fine-tuning.
+
+It was trained on a dataset of approximately 8 million web pages scraped from the internet (WebText) which was about 40 GB of data.
+
+\subsection{GPT-3 (2020)}
+GPT-3 was another state-of-the-art language model developed by OpenAI and released in 2020. It represented a significant advancement over its predecessor, GPT-2, in terms of scale, capabilities, and versatility. It kept the same architecture but yet again increased scale and improved learning methodology.
+
+The model was pre-trained on a massive and diverse dataset of internet text which was about 570 GB large.
+
+The following table shows the specifications of GPT 1 through GPT 3 compared against one another. \\
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{12pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Feature}       & \textbf{GPT-1 (2018)}     & \textbf{GPT-2 (2019)}       & \textbf{GPT-3 (2020)}       \\ \midrule
+Layers                 & 12                 & 48                   & 96                   \\
+Parameters             & 117M               & 1.5B                 & 175B                 \\
+Hidden Size            & 768                & 1600                 & 12,288               \\
+Attention Heads        & 12                 & 25                   & 96                   \\
+Vocabulary Size        & 40,000             & 50,257               & 50,257               \\
+Context Length         & 512                & 1024                 & 2048                 \\ \bottomrule
+\end{tabular}
+\caption{Specifications of GPT-1, GPT-2, and GPT-3}
+\label{tab:gpt_specs}
+\end{table}
+
+
+\subsection{Zero-Shot and Few-Shot Learning}
+\textbf{Zero-shot learning} is paradigm where a model generalizes to new tasks or classes without seeing any labeled examples for those tasks during training.
+
+\textbf{Few-shot learning} on the other hand is an approach where an ML model learns to perform a task or classify new classes with only a few labeled examples per class. It leverages prior knowledge from large-scale pretraining or meta-learning to adapt quickly to data-scarce scenarios.
+
+While few-shot learning has been explored conceptually and in limited applications before, the practical realization and broad applicability of few-shot learning in NLP truly started with OpenAI's GPT-3 in 2020. GPT-3 displayed the ability to perform a wide range of tasks by using few-shot prompts, stopping the need for task-specific fine-tuning and changing how language models are used in practice. GPT-3 was capable of this due to its massive size and long training which resulted in a pre-trained model that has learned language representations well enough to be able to perform few-shot learning adequately. In some tasks, few shot learning on GPT-3 performed similarly to models fine-tuned to perform that task. GPT-3 also showed capability of performing zero-shot learning as well.
+
+As an example of few-shot prompts consider the following input to a pre-trained large language model (4-shot prompt):
+
+\hrulefill
+
+\texttt{\textcolor{blue}{Text:} (lawrence bounces) all over the stage, dancing, running, sweating, mopping his face and generally displaying the wacky talent that brought him fame in the first place.
+\\
+\textcolor{blue}{Sentiment:} positive}
+
+\texttt{\textcolor{blue}{Text:} despite all evidence to the contrary, this clunker has somehow managed to pose as an actual feature movie, the kind that charges full admission and gets hyped on tv and purports to amuse small children and ostensible adults.\\
+\textcolor{blue}{Sentiment:} negative
+}
+
+\texttt{\textcolor{blue}{Text:} for the first time in years, de niro digs deep emotionally, perhaps because he's been stirred by the powerful work of his co-stars.\\
+\textcolor{blue}{Sentiment:} positive}
+
+\texttt{\textcolor{blue}{Text:} i'll bet the video game is a lot more fun than the film. \\
+\textcolor{blue}{Sentiment:}
+}
+
+\hrulefill
+
+\section{Modern Large Language Models (2020 -- Present)}
+\subsection{LLMs}
+GPT-3 is an example of a \textbf{large language model}. It is considered ``large" due to its massive amount of parameters (about 175 billion).
+
+To formulate what constitutes an LLM\footnote{Large language model}, we can state some properties LLMs generally have:
+\begin{enumerate}
+    \item \textbf{They have tens of billions of parameters}, e.g. 1.76 trillion parameters on OpenAI's GPT-4.
+    \item \textbf{They are trained on a massive and diverse corpus of text}, e.g. Meta's LLaMA was trained on about 1.4 TBs of text.
+    \item  \textbf{They are capable of generalization such as zero-shot and few-shot learning}.
+    \item \textbf{They often support a large context window.}
+    \item  \textbf{They require significant computational resources for training and inference}, e.g. Google's Gemini Ultra cost about 190 million dollars to train.
+\end{enumerate}
+
+Now, we will briefly mention some of the modern LLMs that have taken the world by storm. It will become apparent that most LLMs today are trained in the industry rather than in academia.
+
+\subsection{OpenAI's GPT-3.5 (2022)}
+\subsection{OpenAI's GPT-4 (2023)}
+\subsection{Google's Gemini (2023)}
+\subsection{Meta's LLaMA 3 (2024)}
+\subsection{OpenAI's GPT-4o (2024)}
+\subsection{OpenAI's o1-Preview (2024)}
+
+
+
 
 \end{document}
