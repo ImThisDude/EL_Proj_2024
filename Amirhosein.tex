@@ -1,7 +1,4 @@
-%\documentclass{article}
-%\usepackage{amsmath}
-%\usepackage{graphicx}
-%\usepackage{float}
+
 \begin{document}
 
 \section{Automata}
@@ -92,7 +89,37 @@ There’s growing interest in creating hybrid AI models that combine the best of
 \end{itemize}
 These hybrid models could bridge the gap between the probabilistic reasoning of LLMs and the symbolic, rule-based reasoning that humans excel at. This approach could allow AI systems to handle a wider variety of tasks with greater accuracy, from understanding natural language to performing complex logical deductions in fields like mathematics, law, or scientific reasoning.
 
-%\end{document}
+
+\title{Neural language model (2003) Bengio}
+\author{}
+\date{}
+\maketitle
+
+\section*{Introduction}
+
+The 2003 paper by Yoshua Bengio, Réjean Ducharme, Pascal Vincent, and Christian Jauvin, titled \textit{"A Neural Probabilistic Language Model,"} represents a seminal contribution to the field of natural language processing (NLP) and the development of neural language models.This model tackles the “curse of dimensionality” by using neural networks to learn distributed representations of words. In this section, we will try to break down the key concepts from the paper and explain their significance.
+
+\section*{Breaking New Ground}
+
+Before the introduction of neural networks to language modeling, traditional approaches relied heavily on n-grams and other statistical methods to predict the probability of a sequence of words. These methods, while effective to an extent, faced significant limitations such as data sparsity and the "curse of dimensionality". The curse of dimensionality refers to the exponential growth of possible word sequences as the length of the sequence increases. For example, modeling the joint distribution of 10 consecutive words from a vocabulary of 100,000 words involves $100,000^{10}$ potential sequences, making traditional methods impractical.
+
+Traditional n-gram models reduce this by using short, overlapping sequences, but they struggle with new sequences not seen in training. Bengio’s model addresses this by learning a continuous, distributed representation for words, enabling generalization to new sequences.
+\section*{Word Embeddings and Distributed Representations}
+
+One of the most significant contributions of the 2003 paper was the concept of word embeddings. In this model, words are represented as vectors in a continuous, high-dimensional space. This allows the model to capture semantic relationships between words more effectively. For instance, in the embedding space, the distance between vectors can reflect the similarity or dissimilarity between words. This representation has become a cornerstone of modern NLP, enabling more nuanced understanding and generation of human language by machines.
+
+\section*{Neural Network Architecture}
+
+The neural language model proposed by Bengio et al. utilized a feedforward neural network to predict the probability of a word given its preceding context. This architecture consisted of an input layer, a hidden layer, and an output layer. The hidden layer enabled the model to learn complex, non-linear relationships between words, significantly improving the accuracy of language modeling compared to traditional statistical methods.
+
+\section*{Impact on Large Language Models}
+
+The principles established by Bengio et al. have been integral to the evolution of LLMs. Modern models, such as GPT-3 by OpenAI, BERT by Google, and other transformer-based architectures, build upon the idea of word embeddings and neural networks to handle vast amounts of text data. These models leverage attention mechanisms and deep learning techniques to achieve state-of-the-art performance in various NLP tasks, from translation to summarization to question-answering.
+
+Moreover, the shift from discrete, symbolic representations of language to continuous, distributed representations has enabled these models to generalize better and understand context more deeply. This paradigm shift, first conceptualized in the 2003 paper, has propelled advancements in AI, making possible the sophisticated language understanding and generation capabilities seen today.
+
+
+
 
 
 
