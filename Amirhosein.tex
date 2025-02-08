@@ -1,0 +1,125 @@
+
+\begin{document}
+
+\section{Automata}
+During the period from the first computer invented to the invention of internet, computers went from simple calculators to all-encompassing tools for processing and transferring information. This naturally raised the question, "Just how much farther can they go?".
+
+This was the beginning of an endeavor in mathematics and engineering. While the engineer continuously asked, "how to improve the machine further", the mathematician asked, "Can we answer these questions using math?". And this was the start of a new field of research in mathematics which is currently known as "Computer Science".
+
+A lot of models were made to abstractize the concept of an "Automatic Computer". Among them, one that is mainly focused on the science of language and logics, is the "Automata".
+
+An automaton (automata in plural) is an abstract self-propelled computing device which follows a predetermined sequence of operations automatically.A particular type of an automaton which are more relevant to our topic of language models are "Determenistic Finite Automata" or DFA for short.DFA is a simple and very basic automata, well suited for a small or limited finite number of states, inputs, and transition functions. Input can be at one state at a time, the state can be determined, and we know exactly the transition steps.
+
+\subsection{Formal Definition of DFA}
+
+A deterministic finite automaton is a quintuple \( M = (K, \Sigma, \delta, S, F) \) where:
+
+\begin{itemize}
+    \item \( K \) is a finite set of states,
+    \item \( \Sigma \) is an alphabet,
+    \item \( S \in K \) is the initial state,
+    \item \( F \subseteq K \) is the set of final states, and
+    \item \( \delta \) is the transition function, a subset of \( K \times \Sigma \rightarrow K \).
+\end{itemize}
+
+The language understood by a DFA are called "natural languages".For example we can design a simple DFA to accept all strings with a substring of 01 like this:
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{1_plAxvThXdoN-Xi6Iq3Qawg.png}
+	\caption{Fig: Transition Diagram for the DFA accepting all the strings with a substring of 01}
+	\label{fig:DFA}
+\end{figure}
+
+Some people pursuing this theory believed it possible to represent human intelligence as a logical device processing natural language and this led to the development of some simple chatbots. But this pursuit soon came to a halt because the sheer complexity of human language made it impossible to design a viable system by hand.
+
+
+The rise of powerful modern LLMs such as GPT-4-o and Google Bard has led many to believe we have already achieved "machine consciousness". But is this true? If it's true, how would we know it? If it's not, how far are we from it?
+
+\section*{Are Modern LLMs Conscious?}
+
+Instead of a philosophical discussion about what "consciousness" even is, we ask a much simpler question: "Are modern LLMs capable of reasoning?" This question has its fair share of both concurring and opposing opinions among academics. Although most academics believe that LLMs are not yet capable of reasoning.
+
+But if they are not reasoning, what are they doing? In \textit{Can Large Language Models Reason} (\href{https://aiguide.substack.com/p/can-large-language-models-reason}{source}), Mitchell answers this question:
+
+\begin{quote}
+"If it turns out that LLMs are not reasoning to solve the problems we give them, how else could they be solving them? Several researchers have shown that LLMs are substantially better at solving problems that involve terms or concepts that appear more frequently in their training data, leading to the hypothesis that LLMs do not perform robust abstract reasoning to solve problems but instead solve problems (at least in part) by identifying patterns in their training data that match, or are similar to, or are otherwise related to the text of the prompts they are given."
+\end{quote}
+
+This is not cognition; it's merely mechanical perception.
+
+\begin{quote}
+"Some GPT-based LLMs (pre-trained on a known corpus) were much better at arithmetic problems that involved numbers that appeared frequently in the pre-training corpus than those that appeared less frequently. These models appear to lack a general ability for arithmetic but instead rely on a kind of "memorization"—matching patterns of text they have seen in pre-training. As a stark example of this, Horace He, an undergraduate researcher at Cornell, posted on Twitter that on a dataset of programming challenges, GPT-3 solved 10 out of 10 problems that had been published before 2021 (GPT-3's pre-training cutoff date) and zero out of 10 problems that had been published after 2021. GPT-3's success on the pre-2021 challenges thus seems to be due to memorizing problems seen in its training data rather than reasoning about the problems from scratch."
+\end{quote}
+
+This is quite an indictment of GPT’s problem-solving capabilities. However, there is a vigorous debate about what exactly LLMs “understand" and how different it is from how humans understand. On the one hand, most academics hold (\href{https://www.science.org/doi/10.1126/science.adj5957}{source}) that models trained on language “will never approximate human intelligence, even if trained from now until the heat death of the universe.” Not all researchers agree, claiming that “the behavior of LLMs arises not from grasping the meaning of language but rather from learning complex patterns of statistical associations among words and phrases in training data and later performing ‘approximate retrieval’ of these patterns and applying them to new queries.” So they might not be capable of "human reasoning" but they can be called capable of using "machine reasoning".
+
+\section*{Can machines achieve human reasoning and understanding?}
+
+There are a multitude of challenges. First and foremost, how will we see these technologies understand our world? Second, when will we have the tools to know how they can?
+
+OpenAI disclosed that GPT-4 scored very well on the Uniform Bar Exam, the Graduate Record Exam, and several high-school Advanced Placement tests, among other standardized exams to assess language understanding, coding ability, and other capabilities, but evidence of human-level intelligence in GPT-4 is sketchy.
+
+Critics claim that data contamination was at play. People taking standardized tests answer questions they have not seen before, but a system like GPT-4 may have very well seen them in the training data. OpenAI claims to use a "Substring Match" technique to search training data and tags for similar but not exact matches. OpenAI’s method was criticized in one analysis as “superficial and sloppy.” The same critics noted that “for one of the coding benchmarks, GPT-4’s performance on problems published before 2021 was substantially better than on problems published after 2021—GPT-4’s training cutoff. This is a strong indication that the earlier problems were in GPT-4’s training data. There’s a reasonable possibility that OpenAI’s other benchmarks suffered similar contamination.”
+
+Shortcut Learning - ML and deep learning can cause unpredictable errors when facing situations that differ from the training data. This is because such systems are susceptible to shortcut learning; statistical associations in the training data allow the model to produce correct answers for the wrong reasons. Machine learning, neural nets, and deep learning do not teach concepts; instead, they teach shortcuts to connect responses to the training set and apply statistical associations and probability assumptions to produce correct answers without cognition of the intended query. Another study showed that “an AI system that attained human-level performance on a benchmark for assessing reasoning abilities relied on the fact that the correct answers were (unintentionally) more likely statistically to contain certain keywords. For example, answer choices containing the word ‘not’ were more likely to be correct.”
+
+So whenever we might think that LLMs have achieved a level where they are able to solve a unique problem, it might be that there was another very similar problem in their vast amount of database. Or it might be that they came to the correct answer due to wrong reasons.
+
+Basically, the problem of how to appropriately benchmark the level of human intelligence is still an open problem. But the most widely known criteria for assessing human intelligence is the "Turing Test."
+
+The Turing test, originally called the imitation game by Alan Turing in 1949, is a test of a machine's ability to exhibit intelligent behaviour equivalent to, or indistinguishable from, that of a human. Turing proposed that a human evaluator would judge natural language conversations between a human and a machine designed to generate human-like responses. The evaluator would be aware that one of the two partners in conversation was a machine, and all participants would be separated from one another. If the evaluator could not reliably tell the machine from the human, the machine would be said to have passed the test.
+
+This still might not be able to assess whether machines are capable of human reasoning. But to some extent, this can attest that they have achieved some level of human understanding.
+
+
+\section*{What the future holds—Bridging the gap between A.I and humans—}
+
+So far until now, the improvement of LLMs is mainly attributed to drastically increasing the size of Language Models. But it is unlikely that more improvement can be achieved in this regard and some major changes in architecture are needed. This has led many to analyze the process of the human mind in hopes of some motivation. We will explore some of these ideas.
+
+\subsection*{Multimodal Models}
+Nowadays we have achieved good results in approximating human information processing in all five of the human senses. In the strive towards AGI, one might suggest that "why not make a robot who can understand physical information like humans and then let it learn like humans" and the academics' answer to that is "why not?". This is the main idea behind a trend in LLMs to integrate already existing models for computer vision, image processing, etc., into LLMs.
+
+\subsection*{Multidirectional Models}
+A major difference between neural networks and the human mind is the fact that signals in neural networks travel from only one side to another. But the case of the human mind is not so simple. Multidirectional models are a way to mimic that sort of behavior in artificial neural networks.
+
+\subsection*{Hybrid Models}
+There’s growing interest in creating hybrid AI models that combine the best of both worlds:
+\begin{itemize}
+    \item Neural networks (like LLMs) for pattern recognition and dealing with unstructured data.
+    \item Symbolic reasoning systems for applying formal logic, rules, and consistent deductions.
+\end{itemize}
+These hybrid models could bridge the gap between the probabilistic reasoning of LLMs and the symbolic, rule-based reasoning that humans excel at. This approach could allow AI systems to handle a wider variety of tasks with greater accuracy, from understanding natural language to performing complex logical deductions in fields like mathematics, law, or scientific reasoning.
+
+
+\title{Neural language model (2003) Bengio}
+\author{}
+\date{}
+\maketitle
+
+\section*{Introduction}
+
+The 2003 paper by Yoshua Bengio, Réjean Ducharme, Pascal Vincent, and Christian Jauvin, titled \textit{"A Neural Probabilistic Language Model,"} represents a seminal contribution to the field of natural language processing (NLP) and the development of neural language models.This model tackles the “curse of dimensionality” by using neural networks to learn distributed representations of words. In this section, we will try to break down the key concepts from the paper and explain their significance.
+
+\section*{Breaking New Ground}
+
+Before the introduction of neural networks to language modeling, traditional approaches relied heavily on n-grams and other statistical methods to predict the probability of a sequence of words. These methods, while effective to an extent, faced significant limitations such as data sparsity and the "curse of dimensionality". The curse of dimensionality refers to the exponential growth of possible word sequences as the length of the sequence increases. For example, modeling the joint distribution of 10 consecutive words from a vocabulary of 100,000 words involves $100,000^{10}$ potential sequences, making traditional methods impractical.
+
+Traditional n-gram models reduce this by using short, overlapping sequences, but they struggle with new sequences not seen in training. Bengio’s model addresses this by learning a continuous, distributed representation for words, enabling generalization to new sequences.
+\section*{Word Embeddings and Distributed Representations}
+
+One of the most significant contributions of the 2003 paper was the concept of word embeddings. In this model, words are represented as vectors in a continuous, high-dimensional space. This allows the model to capture semantic relationships between words more effectively. For instance, in the embedding space, the distance between vectors can reflect the similarity or dissimilarity between words. This representation has become a cornerstone of modern NLP, enabling more nuanced understanding and generation of human language by machines.
+
+\section*{Neural Network Architecture}
+
+The neural language model proposed by Bengio et al. utilized a feedforward neural network to predict the probability of a word given its preceding context. This architecture consisted of an input layer, a hidden layer, and an output layer. The hidden layer enabled the model to learn complex, non-linear relationships between words, significantly improving the accuracy of language modeling compared to traditional statistical methods.
+
+\section*{Impact on Large Language Models}
+
+The principles established by Bengio et al. have been integral to the evolution of LLMs. Modern models, such as GPT-3 by OpenAI, BERT by Google, and other transformer-based architectures, build upon the idea of word embeddings and neural networks to handle vast amounts of text data. These models leverage attention mechanisms and deep learning techniques to achieve state-of-the-art performance in various NLP tasks, from translation to summarization to question-answering.
+
+Moreover, the shift from discrete, symbolic representations of language to continuous, distributed representations has enabled these models to generalize better and understand context more deeply. This paradigm shift, first conceptualized in the 2003 paper, has propelled advancements in AI, making possible the sophisticated language understanding and generation capabilities seen today.
+
+
+
+
+
+
