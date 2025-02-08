@@ -1,0 +1,30 @@
+%\documentclass{article}
+%\usepackage{amsmath}
+%\usepackage{graphicx}
+%\usepackage{float}
+% \begin{document}
+
+\section{Automata}
+During the period from the first computer invented to the invention of internet, computers went from simple calculators to all-encompassing tools for processing and transferring information. This naturally raised the question, "Just how much farther can they go?".
+
+This was the beginning of an endeavor in mathematics and engineering. While the engineer continuously asked, "how to improve the machine further", the mathematician asked, "Can we answer these questions using math?". And this was the start of a new field of research in mathematics which is currently known as "Computer Science".
+
+A lot of models were made to abstractize the concept of an "Automatic Computer". Among them, one that is mainly focused on the science of language and logics, is the "Automata".
+
+An automaton (automata in plural) is an abstract self-propelled computing device which follows a predetermined sequence of operations automatically.A particular type of an automaton which are more relevant to our topic of language models are "Determenistic Finite Automata" or DFA for short.DFA is a simple and very basic automata, well suited for a small or limited finite number of states, inputs, and transition functions. Input can be at one state at a time, the state can be determined, and we know exactly the transition steps.
+
+\subsection{Formal Definition of DFA}
+
+A deterministic finite automaton is a quintuple \( M = (K, \Sigma, \delta, S, F) \) where:
+
+\begin{itemize}
+    \item \( K \) is a finite set of states,
+    \item \( \Sigma \) is an alphabet,
+    \item \( S \in K \) is the initial state,
+    \item \( F \subseteq K \) is the set of final states, and
+    \item \( \delta \) is the transition function, a subset of \( K \times \Sigma \rightarrow K \).
+\end{itemize}
+
+The language understood by a DFA are called "natural languages". For example we can design a simple DFA to accept all strings with a substring of 01.
+
+
